@@ -37,7 +37,7 @@ func newHub() *Hub {
 		register:    make(chan *Client),
 		unregister:  make(chan *Client),
 		clients:     make(map[*Client]bool),
-		history:     []*MessageBuilder{},
+		history:     make([]*MessageBuilder, 0, 10),
 		historyChan: make(chan *MessageBuilder),
 	}
 }

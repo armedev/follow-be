@@ -12,9 +12,9 @@ type MessageBuilder struct {
 }
 
 type JSONFormat struct {
-	command string          `json:"command"`
-	version string          `json:"version"`
-	data    json.RawMessage `json:"data"`
+	Command string          `json:"command"`
+	Version string          `json:"version"`
+	Data    json.RawMessage `json:"data"`
 }
 
 const (
@@ -83,7 +83,7 @@ func (m *MessageBuilder) getCommand() (string, error) {
 		parsedJson := &JSONFormat{}
 
 		if json.Unmarshal([]byte(strippedMsg), parsedJson) == nil {
-			return parsedJson.command, nil
+			return parsedJson.Command, nil
 		}
 
 		return "", errors.New("failed to parse the message")
@@ -106,7 +106,7 @@ func (m *MessageBuilder) getVersion() (string, error) {
 		parsedJson := &JSONFormat{}
 
 		if json.Unmarshal([]byte(strippedMsg), parsedJson) == nil {
-			return parsedJson.version, nil
+			return parsedJson.Version, nil
 		}
 
 		return "", errors.New("failed to parse the message")
